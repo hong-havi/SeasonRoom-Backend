@@ -5,12 +5,15 @@ import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Controller('users')
-@ApiTags('유저 API')
+@ApiTags('유저 TEST API')
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
   @Post()
-  @ApiOperation({ summary: '유저생성 API', description: '유저생성' })
+  @ApiOperation({
+    summary: '유저생성 API',
+    description: '유저생성 nest g res users'
+  })
   @ApiCreatedResponse({ description: '유저생성쓰', type: CreateUserDto })
   create(@Body() createUserDto: CreateUserDto) {
     return this.usersService.create(createUserDto);
