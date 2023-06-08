@@ -21,7 +21,7 @@ export class ReserveController {
   @Post('event')
   @ApiOperation({
     summary: '이벤트 등록',
-    description: '입방 외 방 이벤트 등록'
+    description: '입방 외 방 이벤트 등록g'
   })
   createEvent(@Body() createReserveDto: CreateReserveDto) {
     return this.reserveService.create(createReserveDto);
