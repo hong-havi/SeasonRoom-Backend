@@ -1,27 +1,51 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+/**
+ *
+ *  Entity 작성
+ *  참고 : https://typeorm.io/entities#column-types-for-postgres
+ *
+ */
 
 @Entity()
 class User {
-  @PrimaryGeneratedColumn()
-  public uno?: number;
+  @PrimaryGeneratedColumn() // Key를 지정하는 데코레이션
+  public UserIdx?: number;
 
-  @Column({ unique: true })
-  public uid: string;
-
-  @Column()
-  public unick: string;
+  @Column() // 안에 컬럼 자료형 표현 가능 text or { length: 30 } or deciaml, { precision: 10, scale: 0 }
+  public Name: string;
 
   @Column()
-  public email: string;
+  public Nick: string;
 
   @Column()
-  public pro_img: string;
+  public Email: string;
 
   @Column()
-  public thumb_img: string;
+  public Profile_img: string;
 
   @Column()
-  public type: string;
+  public Thumb_img: string;
+
+  @Column()
+  public Account_Uid: string;
+
+  @Column()
+  public Account_Type: string;
+
+  @Column()
+  public LoginCount: number;
+
+  @Column()
+  public IsAccess: boolean;
+
+  @Column()
+  public LastLoginDatetime: Date;
+
+  @Column()
+  public UpdateDatetime: Date;
+
+  @Column()
+  public CreateDatetime: Date;
 }
 
 export default User;

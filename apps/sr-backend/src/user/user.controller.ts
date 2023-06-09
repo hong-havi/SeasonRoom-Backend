@@ -16,5 +16,4 @@ export class UserController {
   createUser(@Body() createReserveDto: CreateUserDto) {
     return this.userService.createUser(createReserveDto);
   }
-
 }
