@@ -1,21 +1,30 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { ApiTags, ApiOperation, ApiCreatedResponse } from '@nestjs/swagger';
 import { ReserveService } from './reserve.service';
-import { CreateReserveDto } from './dto/create-reserve.dto';
+import { CreateReserveDto } from './dto/createReserve.dto';
 import { UpdateReserveDto } from './dto/update-reserve.dto';
 
 @Controller('reserve')
-@ApiTags('IF - Reserve API')
+@ApiTags('2.IF - Reserve API')
 export class ReserveController {
   constructor(private readonly reserveService: ReserveService) {}
 
-  @Post()
+  @Post('room/create')
   @ApiOperation({
-    summary: '입방 등록/취소',
-    description: '입방 등록/취소'
+    summary: '입방 등록',
+    description: '입방 등록'
   })
-  create(@Body() createReserveDto: CreateReserveDto) {
-    return this.reserveService.create(createReserveDto);
+  createInRoom(@Body() CreateReserveDto: CreateReserveDto) {
+    return this.reserveService.createReserve(CreateReserveDto);
+  }
+
+  @Post('room/cancel')
+  @ApiOperation({
+    summary: '입방 취소',
+    description: '입방 취소'
+  })
+  deleteInRoom(@Body() CreateReserveDto: CreateReserveDto) {
+    return this.reserveService.deleteReserve(CreateReserveDto);
   }
 
   @Post('event')
@@ -24,7 +33,7 @@ export class ReserveController {
     description: '입방 외 방 이벤트 등록g'
   })
   createEvent(@Body() createReserveDto: CreateReserveDto) {
-    return this.reserveService.create(createReserveDto);
+    return this.reserveService.createReserve(createReserveDto);
   }
 
   @Delete('event/:eventid')
